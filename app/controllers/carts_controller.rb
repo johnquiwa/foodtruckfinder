@@ -4,6 +4,17 @@ class CartsController < ApplicationController
 	end
 
 	def create
+		@cart = Cart.new
+		if @cart.save
+			flash[:success] = "Cart created!"
+			redirect_to carts_path
+		else
+			flash[:danger] = "There was an error in listing this cart!"
+			redirect_to new_cart_path
+		end
+	end
+
+	def index
 	end
 
 	def edit
