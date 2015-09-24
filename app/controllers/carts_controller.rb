@@ -4,7 +4,7 @@ class CartsController < ApplicationController
 	end
 
 	def create
-		@cart = Cart.new
+		@cart = Cart.new(cart_params)
 		if @cart.save
 			flash[:success] = "Cart created!"
 			redirect_to carts_path
@@ -15,6 +15,7 @@ class CartsController < ApplicationController
 	end
 
 	def index
+		@cart = Cart.all
 	end
 
 	def edit
@@ -22,4 +23,9 @@ class CartsController < ApplicationController
 
 	def update
 	end
+
+	private
+		def cart_params
+			params.require(:cart).permit(:name, :address)
+		end
 end
