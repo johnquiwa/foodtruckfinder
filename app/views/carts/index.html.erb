@@ -1,4 +1,10 @@
-<% @cart.each do |cart| %>
-  <h1><%= cart.name %></h1>
-  <p><%= cart.address %></p>
+
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+    <% @cart.each do |cart| %>
+      <h1><%= cart.name %></h1>
+      <p><%= cart.address %></p>
+    <% end %>
 <% end %>

@@ -6,4 +6,7 @@ class PagesController < ApplicationController
 	def about
 	end
 	
+	def search
+		@cart = Cart.all
+	end
 end

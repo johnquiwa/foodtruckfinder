@@ -16,6 +16,11 @@ class CartsController < ApplicationController
 
 	def index
 		@cart = Cart.all
+		if params[:search]
+    		@carts = Cart.search(params[:search]).order("created_at DESC")
+  		else
+    		@carts = Cart.all.order('created_at DESC')
+  		end
 	end
 
 	def edit
