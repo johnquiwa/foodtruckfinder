@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924204005) do
+ActiveRecord::Schema.define(version: 20150928230845) do
 
   create_table "carts", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.boolean  "gmaps"
   end
 
 end

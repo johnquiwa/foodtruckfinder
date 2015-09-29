@@ -1,10 +1,17 @@
-
-<% if @posts.present? %>
-  <%= render @posts %>
-<% else %>
-  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
-    <% @cart.each do |cart| %>
-      <h1><%= cart.name %></h1>
-      <p><%= cart.address %></p>
-    <% end %>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <div id='sidebar_container'>
+        <h1 class="text-center">KartFIND</h1>
+        <div class="well dark" id="markers_list">
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6">
+  <h1>Your next meal is on the corner...</h1>
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'>
+      <%= render 'map' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,8 +18,18 @@ class CartsController < ApplicationController
 		@cart = Cart.all
 		if params[:search]
     		@carts = Cart.search(params[:search]).order("created_at DESC")
+    		@hash = Gmaps4rails.build_markers(@cart) do |cart, marker|
+	  			marker.lat cart.latitude
+	  			marker.lng cart.longitude
+	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
+  				end	
   		else
     		@carts = Cart.all.order('created_at DESC')
+    		@hash = Gmaps4rails.build_markers(@cart) do |cart, marker|
+	  			marker.lat cart.latitude
+	  			marker.lng cart.longitude
+	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
+  				end
   		end
 	end
 

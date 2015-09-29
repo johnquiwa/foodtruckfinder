@@ -4,7 +4,7 @@
             <div id="custom-search-input text-center">
                 <div class="input-group col-md-6 col-md-offset-3">
                     <%= form_tag(carts_path, :method => "get", id: "search-form") do %>
-                    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+                    <%= text_field_tag :search, params[:search], placeholder: "Search by Address" %>
                     <%= submit_tag "Search" %>
                     <% end %>
                 </div>
