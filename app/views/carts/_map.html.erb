@@ -1,10 +1,12 @@
+
+
 <script type="text/javascript">
 $(document).ready(function(){
     var raw_markers   = <%=raw @hash.to_json %>;
     var gmaps_markers;
 
     function createSidebarLi(shop_json) {
-      return ("<li><a>" + shop_json.name + " - " + shop_json.address + "<\/a></li>");
+      return ("<li><a>" + shop_json.titre + " - " + shop_json.address + "<\/a></li>");
     };
 
     function bindLiToMarker($li, marker){

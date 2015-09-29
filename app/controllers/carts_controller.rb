@@ -22,6 +22,7 @@ class CartsController < ApplicationController
 	  			marker.lat cart.latitude
 	  			marker.lng cart.longitude
 	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
+	  			marker.json({ titre: cart.name, address: cart.address})
   				end	
   		else
     		@carts = Cart.all.order('created_at DESC')
@@ -29,6 +30,7 @@ class CartsController < ApplicationController
 	  			marker.lat cart.latitude
 	  			marker.lng cart.longitude
 	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
+	  			marker.json({ titre: property.marker, address: property. address})
   				end
   		end
 	end
