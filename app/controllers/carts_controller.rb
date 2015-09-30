@@ -15,22 +15,23 @@ class CartsController < ApplicationController
 	end
 
 	def index
-		@cart = Cart.all
-		if params[:search]
-    		@carts = Cart.search(params[:search]).order("created_at DESC")
-    		@hash = Gmaps4rails.build_markers(@cart) do |cart, marker|
+		if params[:search].present?
+    		@carts = Cart.near(params[:search], 3)
+    		@hash = Gmaps4rails.build_markers(@carts) do |cart, marker|
+	  			marker.lat cart.latitude
+	  			marker.lng cart.longitude
+	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
+	  			marker.json({ titre: cart.name, 
+	  						address: cart.address
+	  						})
+  				end	
+  		else
+    		@carts = Cart.all.order('created_at DESC')
+    		@hash = Gmaps4rails.build_markers(@carts) do |cart, marker|
 	  			marker.lat cart.latitude
 	  			marker.lng cart.longitude
 	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
 	  			marker.json({ titre: cart.name, address: cart.address})
-  				end	
-  		else
-    		@carts = Cart.all.order('created_at DESC')
-    		@hash = Gmaps4rails.build_markers(@cart) do |cart, marker|
-	  			marker.lat cart.latitude
-	  			marker.lng cart.longitude
-	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
-	  			marker.json({ titre: property.marker, address: property. address})
   				end
   		end
 	end

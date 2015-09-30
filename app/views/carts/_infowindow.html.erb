@@ -1,1 +1,4 @@
-<h3><%= cart.name %></h3> <p><%= cart.address %>
+<h3><%= cart.name %></h3> <p><%= cart.address %></p>
+<% if params[:search].present? %>
+<p>(<%= cart.distance.round(2) %> miles)</p>
+<% end %>

@@ -32,8 +32,14 @@
     <!-- Header -->
         <div class="text-vertical-center">
             <h1>KartFIND</h1>
-            <h3>You're next meal is around the corner.</h3>
+            <h3>Your next meal is around the corner.</h3>
             <br>
-            <%= link_to "Find Out More", search_path, class:"btn btn-dark btn-lg" %>
+            <div class="col-md-4 col-md-offset-4">
+      <%= form_tag carts_path, method: 'get', class: 'navbar-form', role: 'search' do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], size: 150, placeholder: "Address or Zip Code", class: "form-control"%>
+        </div>
+      <% end %>
+    </div>
         </div>
 </body>

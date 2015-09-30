@@ -6,7 +6,7 @@ $(document).ready(function(){
     var gmaps_markers;
 
     function createSidebarLi(shop_json) {
-      return ("<li><a>" + shop_json.titre + " - " + shop_json.address + "<\/a></li>");
+      return ("<li><a>" + "<h4>"+ shop_json.titre + "</h4>" + shop_json.address + "<\/a></li>");
     };
 
     function bindLiToMarker($li, marker){
