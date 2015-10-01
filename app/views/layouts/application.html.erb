@@ -3,12 +3,16 @@
 
 <head>
 <title>KartFIND</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>   
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+<div class="container-fluid">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,27 +25,24 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li></li>
-    </ul>
-    <div class="col-sm-3 col-md-3">
-      <%= form_tag carts_path, method: 'get', class: 'navbar-form', role: 'search' do %>
-        <div class="input-group">
-          <%= text_field_tag :search, params[:search], size: 150, placeholder: "Address or Zip Code", class: "form-control"%>
-        </div>
-      <% end %>
-    </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Karts", carts_path %></li> 
       <li><%= link_to "Add Kart", new_cart_path %></li>
     </ul>
+      <div class="col-sm-3 col-md-3">
+        <%= form_tag carts_path, method: 'get', class: 'navbar-form', role: 'search' do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], size: 150, placeholder: "Address or Zip Code", class: "form-control"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div><!-- /.navbar-collapse -->
 </nav>
 
-<header id="top" class="header">
 <%= javascript_include_tag 'application' %>
 <%= yield %>
-</header>
+
 </body>
 </html>
