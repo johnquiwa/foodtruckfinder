@@ -27,12 +27,6 @@ class CartsController < ApplicationController
   				end	
   		else
     		@carts = Cart.all.order('created_at DESC')
-    		@hash = Gmaps4rails.build_markers(@carts) do |cart, marker|
-	  			marker.lat cart.latitude
-	  			marker.lng cart.longitude
-	  			marker.infowindow render_to_string(:partial => "infowindow", :locals => { :cart => cart})
-	  			marker.json({ titre: cart.name, address: cart.address})
-  				end
   		end
 	end
 
