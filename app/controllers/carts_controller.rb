@@ -16,7 +16,7 @@ class CartsController < ApplicationController
 
 	def index
 		if params[:search].present?
-    		@carts = Cart.near(params[:search], 3)
+    		@carts = Cart.near(params[:search], 1)
     		@hash = Gmaps4rails.build_markers(@carts) do |cart, marker|
 	  			marker.lat cart.latitude
 	  			marker.lng cart.longitude
